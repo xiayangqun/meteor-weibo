@@ -1,0 +1,32 @@
+<template name="index">
+  {{!如果当前已经登录,那么就可以发布自己的微博}}
+  {{#if currentUser}}
+    <form class="well form-inline center" style="text-align: center;">
+      <input type="text" class="span8" id="post">
+      <button id="submit" class="btn btn-success">
+        <i class="icon-comment icon-white"></i>发表
+      </button>
+    </form>
+  {{/if}}
+
+
+  <div class="hero-unit">
+    <h1>欢迎来到weibo</h1>
+    <p>weibo是一个基于Meteor的微博系统</p>
+    <p>
+      <a class="btn btn-primary btn-large" href="/login">登录</a>
+      <a class="btn btn-large" href="/reg">立即注册</a>
+    </p>
+  </div>
+
+  <div class="row">
+    {{!在这里显示所有微博用户的博文}}
+    {{#each posts}}
+      <div class="span4">
+        <h2>{{this.user.username}} 说</h2>
+        <p>{{this.post}}</p>
+        <p class="text-right">--{{this.time}}</p>
+      </div>
+    {{/each}}
+  </div>
+</template>
